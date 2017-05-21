@@ -32,7 +32,9 @@ public class playerController : MonoBehaviour {
         Vector3 force = vec.normalized * speedMultiplier;
         rb.AddForce(force);
     }
+     
 
+    //grab pickups and add to score on collision
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("pickup"))
@@ -40,6 +42,8 @@ public class playerController : MonoBehaviour {
             other.gameObject.SetActive(false);
             count += 1;
             countText.text = count.ToString();
+            
+            //temporary "WIN" calculation
             if (count >= 8)
             {
                 winText.text = "WIN!";

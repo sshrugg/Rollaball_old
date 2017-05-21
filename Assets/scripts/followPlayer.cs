@@ -17,23 +17,22 @@ public class followPlayer : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
-    }
-
-    private void FixedUpdate()
+    void Update()
     {
-        //transform.position = player.transform.position + offset;
-        if (Input.GetAxis("Mouse X") > 0)
+
+        //horizontal movement of camera with mouse
+        if (Input.GetAxis("Mouse X") > 0 || Input.GetAxis("JoystickX") > 0)
         {
             RotateCamera(Vector3.up);
         }
-        else if (Input.GetAxis("Mouse X") < 0)
+        else if (Input.GetAxis("Mouse X") < 0 || Input.GetAxis("JoystickX") < 0)
         {
             RotateCamera(Vector3.down);
         }
+        //update camera position without rotation if mouse position is static
         else
         {
-            transform.position = player.transform.position + offset;
+            RotateCamera(Vector3.zero);
         }
     }
 
