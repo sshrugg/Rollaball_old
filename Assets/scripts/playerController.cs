@@ -26,7 +26,14 @@ public class playerController : MonoBehaviour {
         vec = Camera.main.transform.TransformDirection(vec);  // Make relative to main camera
         vec.y = 0;  // optional for no y movement.
         Vector3 force = vec.normalized * speedMultiplier;
-
         rb.AddForce(force);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("pickup"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 }
